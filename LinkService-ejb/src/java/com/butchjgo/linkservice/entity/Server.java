@@ -146,7 +146,7 @@ public class Server implements Serializable {
 
     @Override
     public String toString() {
-        return "com.butchjgo.entity.Server[ id=" + id + " ]";
+        return "com.butchjgo.linkservice.entity.Server[ id=" + id + " ]";
     }
     
 }

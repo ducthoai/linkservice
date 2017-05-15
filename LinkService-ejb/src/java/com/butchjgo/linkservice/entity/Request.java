@@ -100,6 +100,19 @@ public class Request implements Serializable {
     public Request() {
     }
 
+    public Request(String ip, String userAgent, String url, String password, Boolean isProcessed, Boolean isLeech, Boolean isServe, Date receive, Server server) {
+        this.ip = ip;
+        this.userAgent = userAgent;
+        this.url = url;
+        this.password = password;
+        this.isProcessed = isProcessed;
+        this.isLeech = isLeech;
+        this.isServe = isServe;
+        this.receive = receive;
+        this.server = server;
+    }
+    
+
     public Request(Integer id) {
         this.id = id;
     }
@@ -252,7 +265,7 @@ public class Request implements Serializable {
 
     @Override
     public String toString() {
-        return "com.butchjgo.entity.Request[ id=" + id + " ]";
+        return this.getUrl();
     }
     
 }

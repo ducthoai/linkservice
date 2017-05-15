@@ -160,7 +160,7 @@ public class Account implements Serializable {
 
     @Override
     public String toString() {
-        return "com.butchjgo.entity.Account[ id=" + id + " ]";
+        return "com.butchjgo.linkservice.entity.Account[ id=" + id + " ]";
     }
     
 }
