@@ -16,16 +16,20 @@ import org.json.simple.JSONObject;
 @Stateless
 public class JSonMSGSessionBean implements JSonMSGSessionBeanLocal {
 
-    JSONObject invalidCaptchaJson = new JSONObject();
-    JSONObject invalidURLJson = new JSONObject();
+    private final JSONObject invalidCaptchaJson = new JSONObject();
+    private final JSONObject invalidURLJson = new JSONObject();
+    private final JSONObject successJson = new JSONObject();
 
     @PostActivate
     private void prepareJsonMSG() {
         invalidCaptchaJson.put("msg", "invalid captcha");
-        invalidCaptchaJson.put("error", "Please try again");
-        
-        invalidURLJson.put("error", "Invalid url");
+        invalidCaptchaJson.put("isSuccess", false);
+
         invalidURLJson.put("msg", "This url may not currently support, please try again");
+        invalidURLJson.put("isSuccess", false);
+
+        successJson.put("msg", "Request successfully");
+        successJson.put("isSuccess", true);
     }
 
     @Override
@@ -37,5 +41,9 @@ public class JSonMSGSessionBean implements JSonMSGSessionBeanLocal {
     public JSONObject getInvalidURLJSON() {
         return this.invalidURLJson;
     }
-    
+
+    @Override
+    public JSONObject getSuccessJSON() {
+        return this.successJson;
+    }
 }

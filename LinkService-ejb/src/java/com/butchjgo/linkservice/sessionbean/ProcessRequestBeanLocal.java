@@ -23,8 +23,8 @@ public interface ProcessRequestBeanLocal {
 
     String getHistory();
 
-    void processPostRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+    JSONObject processPostRequest(HttpServletRequest request) throws ServletException, IOException;
 
-    void processGetRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+    JSONObject processGetRequest(HttpServletRequest request) throws ServletException, IOException;
     
 }

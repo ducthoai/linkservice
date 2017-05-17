@@ -35,7 +35,7 @@ public class ProcessRequestBean implements ProcessRequestBeanLocal {
 
     @EJB
     private LinkServiceSessionBeanLocal linkServiceSessionBean;
-    
+
     @PersistenceContext(unitName = "LinkService-ejbPU")
     private EntityManager em;
 
@@ -63,31 +63,30 @@ public class ProcessRequestBean implements ProcessRequestBeanLocal {
     }
 
     @Override
-    public void processPostRequest(HttpServletRequest request, HttpServletResponse response)
+    public JSONObject processPostRequest(HttpServletRequest request)
             throws ServletException, IOException {
-        try (PrintWriter out = response.getWriter()) {
-            String capcha = request.getParameter("g-recaptcha-response");
-            if (capcha == null || capcha.isEmpty() || !recaptchaSessionBean.isValid(capcha)) {
-                out.write(jSonMSGSessionBean.getInvalidGcaptchaJSON().toJSONString());
-                return;
-            }
-            String url = request.getParameter("link");
-            if (url == null || url.isEmpty() || !verifyURLSessionBean.isValidURL(url)) {
-                out.write(jSonMSGSessionBean.getInvalidURLJSON().toJSONString());
-                return;
-            }
-            String password = request.getParameter("password");
-            if (password == null || password.isEmpty()) password = "";
+        
+        String capcha = request.getParameter("g-recaptcha-response");
+        if (capcha == null || capcha.isEmpty() || !recaptchaSessionBean.isValid(capcha)) {
+            return jSonMSGSessionBean.getInvalidGcaptchaJSON();
         }
-
+        
+        String url = request.getParameter("link");
+        if (url == null || url.isEmpty() || !verifyURLSessionBean.isValidURL(url)) {
+            return jSonMSGSessionBean.getInvalidURLJSON();
+        }
+        
+        String password = request.getParameter("password");
+        if (password == null || password.isEmpty()) {
+            password = "";
+        }
+        return null;
     }
 
     @Override
-    public void processGetRequest(HttpServletRequest request, HttpServletResponse response)
+    public JSONObject processGetRequest(HttpServletRequest request)
             throws ServletException, IOException {
-        try (PrintWriter out = response.getWriter()) {
-
-        }
+        return null;
     }
 
     public void persist(Object object) {
