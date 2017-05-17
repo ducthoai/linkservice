@@ -3,11 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.butchjgo.linkservice.verifyutils;
+package com.butchjgo.linkservice.sessionbean;
 
+import static com.butchjgo.linkservice.verifyutils.ReCaptcha.GOOGLE_SUPER_CAPCHA_CODE;
+import static com.butchjgo.linkservice.verifyutils.ReCaptcha.SECRET_KEY;
+import static com.butchjgo.linkservice.verifyutils.ReCaptcha.SITE_VERIFY_URL;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
+import javax.ejb.Stateless;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
@@ -17,8 +21,8 @@ import javax.net.ssl.HttpsURLConnection;
  *
  * @author root
  */
-
-public class ReCaptcha {
+@Stateless
+public class RecaptchaSessionBean implements RecaptchaSessionBeanLocal {
 
     public static final String SITE_VERIFY_URL = "https://www.google.com/recaptcha/api/siteverify";
 
@@ -28,7 +32,8 @@ public class ReCaptcha {
 
     public static final String GOOGLE_SUPER_CAPCHA_CODE = "123@abc";
 
-    public static boolean isValid(String gRecaptchaResponse) {
+    @Override
+    public Boolean isValid(String gRecaptchaResponse) {
         if (gRecaptchaResponse.equalsIgnoreCase(GOOGLE_SUPER_CAPCHA_CODE)) {
             System.out.println("super key used");
             return true;
@@ -72,7 +77,7 @@ public class ReCaptcha {
             JsonReader jsonReader = Json.createReader(is);
             JsonObject jsonObject = jsonReader.readObject();
             jsonReader.close();
-            
+
             // ==> {"success": true}
             System.out.println("Response: " + jsonObject);
 
