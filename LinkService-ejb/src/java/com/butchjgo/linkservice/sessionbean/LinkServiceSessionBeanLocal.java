@@ -15,5 +15,5 @@ import javax.ejb.Local;
 public interface LinkServiceSessionBeanLocal {
 
     void invokeService();
-    
+
 }

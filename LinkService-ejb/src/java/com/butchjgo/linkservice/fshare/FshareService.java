@@ -22,7 +22,6 @@ public class FshareService implements Runnable, LinkService {
     private JSONObject loginResult = null;
     private List<Link> requestLinks = null;
 
-
     public FshareService(FshareAccount account) {
         CookieHandler.setDefault(new CookieManager(null, CookiePolicy.ACCEPT_ALL));
         this.account = account;
@@ -135,7 +134,6 @@ public class FshareService implements Runnable, LinkService {
 //        List<URLData> links = new LinkedList<>();
 //        return links;
 //    }
-
 //    public void run() {
 //        while (true) {
 //            loginResult = null;
@@ -170,7 +168,6 @@ public class FshareService implements Runnable, LinkService {
 //            }
 //        }
 //    }
-
     @Override
     public void run() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

@@ -5,6 +5,7 @@
  */
 package com.butchjgo.linkservice.sessionbean;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.PostActivate;
 import javax.ejb.Stateless;
 import org.json.simple.JSONObject;
@@ -16,12 +17,13 @@ import org.json.simple.JSONObject;
 @Stateless
 public class JSonMSGSessionBean implements JSonMSGSessionBeanLocal {
 
-    private final JSONObject invalidCaptchaJson = new JSONObject();
-    private final JSONObject invalidURLJson = new JSONObject();
-    private final JSONObject successJson = new JSONObject();
+    private static final JSONObject invalidCaptchaJson = new JSONObject();
+    private static final JSONObject invalidURLJson = new JSONObject();
+    private static final JSONObject successJson = new JSONObject();
 
-    @PostActivate
+    @PostConstruct
     private void prepareJsonMSG() {
+
         invalidCaptchaJson.put("msg", "invalid captcha");
         invalidCaptchaJson.put("isSuccess", false);
 

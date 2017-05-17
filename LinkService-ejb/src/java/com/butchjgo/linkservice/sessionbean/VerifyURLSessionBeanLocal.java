@@ -14,6 +14,6 @@ import javax.ejb.Local;
 @Local
 public interface VerifyURLSessionBeanLocal {
 
-    Boolean isValidURL(String URL);
-    
+    Boolean isValidURL(String url);
+
 }

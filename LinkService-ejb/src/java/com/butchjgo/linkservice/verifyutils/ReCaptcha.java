@@ -17,7 +17,6 @@ import javax.net.ssl.HttpsURLConnection;
  *
  * @author root
  */
-
 public class ReCaptcha {
 
     public static final String SITE_VERIFY_URL = "https://www.google.com/recaptcha/api/siteverify";
@@ -72,7 +71,7 @@ public class ReCaptcha {
             JsonReader jsonReader = Json.createReader(is);
             JsonObject jsonObject = jsonReader.readObject();
             jsonReader.close();
-            
+
             // ==> {"success": true}
             System.out.println("Response: " + jsonObject);
 

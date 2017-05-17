@@ -26,5 +26,5 @@ public interface ProcessRequestBeanLocal {
     JSONObject processPostRequest(HttpServletRequest request) throws ServletException, IOException;
 
     JSONObject processGetRequest(HttpServletRequest request) throws ServletException, IOException;
-    
+
 }

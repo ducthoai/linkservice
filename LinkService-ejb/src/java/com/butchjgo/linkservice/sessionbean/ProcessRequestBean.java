@@ -50,7 +50,6 @@ public class ProcessRequestBean implements ProcessRequestBeanLocal {
             jsono.put("isSuccess", false);
             return jsono;
         }
-
         data.put(url, password);
         jsono.put("msg", "added successfully");
         jsono.put("isSuccess", true);
@@ -65,22 +64,23 @@ public class ProcessRequestBean implements ProcessRequestBeanLocal {
     @Override
     public JSONObject processPostRequest(HttpServletRequest request)
             throws ServletException, IOException {
-        
+        JSONObject an = new JSONObject();
         String capcha = request.getParameter("g-recaptcha-response");
         if (capcha == null || capcha.isEmpty() || !recaptchaSessionBean.isValid(capcha)) {
             return jSonMSGSessionBean.getInvalidGcaptchaJSON();
         }
-        
+
         String url = request.getParameter("link");
         if (url == null || url.isEmpty() || !verifyURLSessionBean.isValidURL(url)) {
             return jSonMSGSessionBean.getInvalidURLJSON();
         }
-        
+
         String password = request.getParameter("password");
         if (password == null || password.isEmpty()) {
             password = "";
         }
-        return null;
+        linkServiceSessionBean.invokeService();
+        return jSonMSGSessionBean.getSuccessJSON();
     }
 
     @Override

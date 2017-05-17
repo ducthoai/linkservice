@@ -15,5 +15,5 @@ import javax.ejb.Local;
 public interface RecaptchaSessionBeanLocal {
 
     Boolean isValid(String parameter);
-    
+
 }

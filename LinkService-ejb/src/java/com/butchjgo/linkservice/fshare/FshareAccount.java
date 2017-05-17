@@ -7,6 +7,7 @@ import org.json.simple.JSONObject;
  * Created by root on 5/14/2017.
  */
 public class FshareAccount extends Account {
+
     public FshareAccount(String email, String password) {
         super(email, password);
     }

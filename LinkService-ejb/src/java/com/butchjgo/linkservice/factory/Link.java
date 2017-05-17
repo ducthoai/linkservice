@@ -4,6 +4,7 @@ package com.butchjgo.linkservice.factory;
  * Created by root on 5/14/2017.
  */
 public class Link {
+
     private String link = "", password = "";
 
     public Link(String link, String password) {
@@ -25,9 +26,9 @@ public class Link {
 
     @Override
     public String toString() {
-        return "Link{" +
-                "link='" + link + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        return "Link{"
+                + "link='" + link + '\''
+                + ", password='" + password + '\''
+                + '}';
     }
 }

@@ -18,6 +18,6 @@ public interface JSonMSGSessionBeanLocal {
     JSONObject getInvalidGcaptchaJSON();
 
     JSONObject getInvalidURLJSON();
-    
+
     JSONObject getSuccessJSON();
 }
